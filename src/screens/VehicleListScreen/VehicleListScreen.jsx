@@ -50,7 +50,6 @@ const VehicleListScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>Vehicles</Text>
       {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null}
       <TextInput
         placeholder='search'
@@ -76,7 +75,7 @@ const VehicleListScreen = ({navigation}) => {
 
 VehicleListScreen.navigationOptions = () => {
   return {
-    headerShown: false
+    title: "Vehicles"
   }
 }
 

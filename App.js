@@ -4,6 +4,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Feather } from "@expo/vector-icons";
 
 import { setNavigator } from './src/navigationRef';
 
@@ -18,6 +19,17 @@ import VehicleDetailScreen from './src/screens/VehicleDetailScreen';
 import AccountScreen from './src/screens/AccountScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 
+const VehicleListFlow = createStackNavigator({
+  VehicleList: VehicleListScreen,
+  VehicleDetail: VehicleDetailScreen
+});
+
+VehicleListFlow.navigationOptions = () => {
+  return {
+    title: "Vehicles",
+    tabBarIcon: <Feather name="list" size={20} />
+  }
+};
 
 const switchNavigator = createSwitchNavigator(
   {
@@ -31,14 +43,7 @@ const switchNavigator = createSwitchNavigator(
       }
     }),
     mainFlow: createMaterialBottomTabNavigator({
-      vehicleListFlow: createStackNavigator({
-        VehicleList: VehicleListScreen,
-        VehicleDetail: VehicleDetailScreen
-      },{
-        defaultNavigationOptions:{
-        title: ""
-      }
-      }),
+      vehicleListFlow: VehicleListFlow,
       Account: AccountScreen
     })
   },{

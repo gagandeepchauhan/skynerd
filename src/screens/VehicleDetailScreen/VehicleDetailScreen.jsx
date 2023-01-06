@@ -19,7 +19,6 @@ const VehicleDetailScreen = ({ isFocused, navigation }) => {
       <NavigationEvents
         onWillBlur={() => setLocationNotFound(false)}
       />
-      <Text style={styles.textStyle}>Vehicle Track</Text>
       <View style={styles.detail}>
         <Text style={styles.registrationNumber}>{data?.registrationNumber}</Text>
         <Text style={styles.type}>{data?.type}</Text>
@@ -35,10 +34,10 @@ const VehicleDetailScreen = ({ isFocused, navigation }) => {
   )
 };
 
-// VehicleDetailScreen.navigationOptions = () => {
-//   return {
-//     headerShown: false
-//   }
-// }
+VehicleDetailScreen.navigationOptions = () => {
+  return {
+    title: "Vehicle Track"
+  }
+}
 
 export default withNavigationFocus(VehicleDetailScreen);
